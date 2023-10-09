@@ -33,4 +33,4 @@ jobs:
         run: npm i -g vercel  # Install Vercel CLI globally
 
       - name: Deploy to Vercel
-        run: vercel --token fFmFLhUrLOoAXwl96vSjs7WF --prod  # Deploy your project to Vercel
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod  # Deploy your project to Vercel
