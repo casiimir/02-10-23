@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest  # Specifies the OS image to use for the job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checks-out your repository so the job can access it
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18  # Specifies the Node.js version to use
+
+      - name: Install dependencies
+        run: npm install  # Install project dependencies
+
+      - name: Run tests
+        run: npm test  # Run your project's tests
+
+  deploy:
+    needs: build_and_test  # Specifies that this job depends on the build_and_test job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Vercel CLI
+        run: npm i -g vercel  # Install Vercel CLI globally
+
+      - name: Deploy to Vercel
+        run: vercel --token fFmFLhUrLOoAXwl96vSjs7WF --prod  # Deploy your project to Vercel
