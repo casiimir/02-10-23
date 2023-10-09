@@ -112,7 +112,7 @@ export default function Home() {
         </header>
 
         <main className={styles.content}>
-          <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+          <h1>Libreria digitale bassata su Open Library</h1>
           <p>
             e.g.{" "}
             <Link href="/search?q=Italo+Calvino">
